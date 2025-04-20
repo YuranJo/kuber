@@ -1,0 +1,22 @@
+# Deployment configurations  
+stable:
+  replicas: 2
+  version: v1
+  containerSpecImagePullPolicy: Always
+  containerName: bestrong
+  image: yuranjo/jabasrala
+  imageTag: latest
+  resources:
+    requestsMemory: 200Mi
+    requestsCpu: 200m
+    limitsMemory: 3000Mi
+    limitsCpu: 1000m
+  port: 80
+
+ingress:
+  clasteIssuareName: "letsencrypt-prod"
+  hostname: jabasrala.me
+clusterIssuer:
+  email: y14r06a062006@gmail.com
+  server: "https://acme-v02.api.letsencrypt.org/directory"
+  privateKeySecretName: "letsencrypt-prod-key"
